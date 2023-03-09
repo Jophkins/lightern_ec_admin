@@ -4,8 +4,10 @@ import { makeAutoObservable } from 'mobx';
 export default class ProductStore {
   constructor() {
     this._types = [
-      { id: 1, name: 'chandalier' },
-      { id: 2, name: 'bra' },
+      { id: 1, name: 'Люстры' },
+      { id: 2, name: 'Бра' },
+      { id: 3, name: 'Торшеры' },
+      { id: 4, name: 'Настольные лампы' },
     ];
     this._products = [
       {
@@ -59,10 +61,12 @@ export default class ProductStore {
         'typeId': 4,
       },
     ];
+    this._selectedType = {};
     makeAutoObservable(this);
   }
 
 
+// setters
   setTypes(types) {
     this._types = types;
   }
@@ -71,6 +75,12 @@ export default class ProductStore {
     this._products = products;
   }
 
+  setSelectedType(type) {
+    this._selectedType = type;
+  }
+
+
+  // getters
   get types() {
     return this._types;
   }
@@ -78,4 +88,10 @@ export default class ProductStore {
   get products() {
     return this._products;
   }
+
+  get selectedType() {
+    return this._selectedType;
+  }
+
+
 }
