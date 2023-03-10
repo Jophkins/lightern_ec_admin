@@ -8,7 +8,7 @@ const ProductList = observer(() => {
 
   return (
     <div>
-      <div className='row d-flex'>
+      <div className='row'>
         {product.products.map(product =>
           <ProductItem key={product.id} product={product} />
         )}

@@ -5,6 +5,7 @@ import Products from '../Products';
 import Orders from '../Orders/Orders';
 import Auth from '../Auth';
 import { Context } from '../../App';
+import ProductPage from '../../pages/ProductPage';
 
 const AppRouter = () => {
   const {admin} = React.useContext(Context)
@@ -14,6 +15,7 @@ const AppRouter = () => {
     <Routes>
       {admin.isAuth && <Route path="/" element={<MainContent />} />}
       {admin.isAuth && <Route path="/products" element={<Products />} />}
+      {admin.isAuth && <Route path="/products/:id" element={<ProductPage />} />}
       {admin.isAuth && <Route path="/orders" element={<Orders />} />}
       <Route path="*" element={<Auth />} />
     </Routes>
