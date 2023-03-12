@@ -21,7 +21,7 @@ const Sidebar = () => {
 
               <li className='nav-item'>
                 <Link to='/products' className='nav-link align-middle px-0'>
-                  <i className='fs-4 bi-house'></i> <span className='ms-1 d-none d-sm-inline'>Товары</span>
+                  <i className='fs-4 bi-house'></i> <span className='ms-1 d-none d-sm-inline'>Управление товарами</span>
                 </Link>
               </li>
 
