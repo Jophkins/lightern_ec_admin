@@ -4,10 +4,11 @@ import MainContent from '../MainContent';
 import Products from '../Products';
 import Orders from '../Orders/Orders';
 import Auth from '../Auth';
-import { Context } from '../../App';
+import { Context } from '../../index';
 import ProductPage from '../../pages/ProductPage';
+import { observer } from 'mobx-react-lite';
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const {admin} = React.useContext(Context)
 
 
@@ -20,6 +21,6 @@ const AppRouter = () => {
       <Route path="*" element={<Auth />} />
     </Routes>
   );
-};
+});
 
 export default AppRouter;

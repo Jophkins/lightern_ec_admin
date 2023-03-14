@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 
 export default class AdminStore {
   constructor() {
-    this._isAuth = true;
+    this._isAuth = false;
     this._admin = {};
     makeAutoObservable(this);
   }

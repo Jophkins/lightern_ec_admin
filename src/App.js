@@ -2,28 +2,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import './App.scss';
-import Sidebar from './components/Sidebar';
+import SideBarAndAppRouter from './components/SideBarAndAppRouter';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
-import AdminStore from './store/AdminStore';
-import ProductStore from './store/ProductStore';
+import { observer } from 'mobx-react-lite';
+import { Context } from './index';
+import { check } from './http/adminAPI';
 
-export const Context = React.createContext(null);
 
-function App() {
+const App = observer(() => {
+  const {admin} = React.useContext(Context);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    check().then(data => {
+      admin.setAdmin(true);
+      admin.setIsAuth(true);
+    }).finally(() => setLoading(false))
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="spinner-border d-flex justify-content-center" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    )
+  }
+
   return (
     <div className='App'>
       <BrowserRouter>
-        <Context.Provider value={{
-          admin: new AdminStore(),
-          product: new ProductStore()
-        }}>
-          <Sidebar />
-        </Context.Provider>
+          <SideBarAndAppRouter />
       </BrowserRouter>
     </div>
   );
-}
+});
 
 export default App;

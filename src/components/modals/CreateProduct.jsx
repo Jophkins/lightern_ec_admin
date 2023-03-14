@@ -1,5 +1,5 @@
 import React from 'react';
-import { Context } from '../../App';
+import { Context } from '../../index';
 
 const CreateProduct = () => {
   const {product} = React.useContext(Context);

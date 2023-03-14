@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppRouter from '../AppRouter';
 
-const Sidebar = () => {
+const SidebarAndAppRouter = () => {
   return (
     <div className='container-fluid'>
       <div className='row flex-nowrap'>
@@ -52,4 +52,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarAndAppRouter;
