@@ -20,7 +20,7 @@ const App = observer(() => {
       admin.setAdmin(true);
       admin.setIsAuth(true);
     }).finally(() => setLoading(false))
-  }, []);
+  }, [admin]);
 
   if (loading) {
     return (

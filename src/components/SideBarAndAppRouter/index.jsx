@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppRouter from '../AppRouter';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../index';
 
-const SidebarAndAppRouter = () => {
+const SidebarAndAppRouter =  observer(() => {
+
+  const {admin} = React.useContext(Context);
+
+  const logOut = () => {
+    admin.setAdmin({});
+    admin.setIsAuth(false);
+    localStorage.removeItem('token');
+  }
+
   return (
     <div className='container-fluid'>
       <div className='row flex-nowrap'>
@@ -39,7 +50,7 @@ const SidebarAndAppRouter = () => {
                 <span className='d-none d-sm-inline mx-1'>Администратор</span>
               </Link>
               <ul className='dropdown-menu dropdown-menu-dark text-small shadow' aria-labelledby='dropdownUser1'>
-                <li><Link className='dropdown-item' to='/'>Sign out</Link></li>
+                <li><Link onClick={logOut} className='dropdown-item' to='/'>Выйти</Link></li>
               </ul>
             </div>
           </div>
@@ -50,6 +61,6 @@ const SidebarAndAppRouter = () => {
       </div>
     </div>
   );
-};
+});
 
 export default SidebarAndAppRouter;

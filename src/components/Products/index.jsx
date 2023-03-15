@@ -3,8 +3,17 @@ import TypeBar from '../TypeBar';
 import ProductList from '../ProductList';
 import CreateType from '../modals/CreateType';
 import CreateProduct from '../modals/CreateProduct';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../index';
+import { fetchProduct, fetchTypes } from '../../http/productAPI';
 
-const Products = () => {
+const Products = observer(() => {
+  const {product} = React.useContext(Context);
+
+  React.useEffect(() => {
+    fetchTypes().then(data => product.setTypes(data));
+    fetchProduct().then(data => product.setProducts(data.rows));
+  }, [product])
 
   return (
     <div className="wrapper">
@@ -24,6 +33,6 @@ const Products = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Products;
