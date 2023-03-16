@@ -13,18 +13,18 @@ const Products = observer(() => {
 
   React.useEffect(() => {
     fetchTypes().then(data => product.setTypes(data));
-    fetchProduct(null, 1, 2).then(data => {
+    fetchProduct(null, 1, 20).then(data => {
       product.setProducts(data.rows);
       product.setTotalCount(data.count);
     });
   }, [product]);
 
   React.useEffect(() => {
-    fetchProduct(product.selectedType.id, product.page, 2).then(data => {
+    fetchProduct(product.selectedType.id, product.page, 20).then(data => {
       product.setProducts(data.rows);
       product.setTotalCount(data.count);
     });
-  }, [product.page, product.selectedType])
+  }, [product, product.page, product.selectedType])
 
   return (
     <div className="wrapper">
