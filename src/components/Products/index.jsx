@@ -24,7 +24,7 @@ const Products = observer(() => {
       product.setProducts(data.rows);
       product.setTotalCount(data.count);
     });
-  }, [product, product.page, product.selectedType])
+  }, [product, product.page, product.selectedType]);
 
   return (
     <div className="wrapper">

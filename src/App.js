@@ -32,6 +32,15 @@ const App = observer(() => {
 
   return (
     <div className='App'>
+      <div className="container d-flex justify-content-center">
+        TODO:
+        <ul>
+          <li>Удаление категории</li>
+          <li>Редактирование категории</li>
+          <li>Удаление товара</li>
+          <li>Редактирование товара</li>
+        </ul>
+      </div>
       <BrowserRouter>
           <SideBarAndAppRouter />
       </BrowserRouter>
