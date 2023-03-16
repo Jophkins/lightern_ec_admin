@@ -48,7 +48,14 @@ const CreateProduct = observer(() => {
     formData.append('img', file);
     formData.append('typeId', product.selectedType.id);
     formData.append('info', JSON.stringify(info));
-    createProduct(formData).then(data => alert('Товар добавлен'));
+    createProduct(formData).then(data => {
+      alert('Товар добавлен');
+      setName('');
+      setArticle('');
+      setPrice(0);
+      setFile(null);
+      setInfo([]);
+    });
   };
 
   return (
