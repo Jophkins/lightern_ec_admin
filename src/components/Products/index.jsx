@@ -12,12 +12,18 @@ const Products = observer(() => {
   const {product} = React.useContext(Context);
 
   React.useEffect(() => {
-    fetchTypes().then(data => product.setTypes(data));
-    fetchProduct(null, 1, 20).then(data => {
-      product.setProducts(data.rows);
-      product.setTotalCount(data.count);
-    });
-  }, [product, product.types]);
+    if (!product.typesLoaded) {
+      fetchTypes().then(data => product.setTypes(data));
+      product.setTypesLoaded(true);
+    }
+    if (!product.productsLoaded) {
+      fetchProduct(null, 1, 20).then(data => {
+        product.setProducts(data.rows);
+        product.setTotalCount(data.count);
+      });
+      product.setProductsLoaded(true);
+    }
+  }, [product, product.typesLoaded, product.productsLoaded]);
 
   React.useEffect(() => {
     fetchProduct(product.selectedType.id, product.page, 20).then(data => {

@@ -5,7 +5,9 @@ export default class ProductStore {
   constructor() {
     this._types = [];
     this._products = [];
+    this._productsLoaded = false;
     this._selectedType = {};
+    this._typesLoaded = false;
     this._page = 1;
     this._totalCount = 0;
     this._limit = 20;
@@ -22,8 +24,16 @@ export default class ProductStore {
     this._products = products;
   }
 
+  setProductsLoaded(bool) {
+    this._productsLoaded = bool;
+  }
+
   setSelectedType(type) {
     this._selectedType = type;
+  }
+
+  setTypesLoaded(bool) {
+    this._typesLoaded = bool;
   }
 
   setPage(page) {
@@ -44,9 +54,17 @@ export default class ProductStore {
     return this._products;
   }
 
+  get productsLoaded() {
+    return this._productsLoaded;
+  }
+
   get selectedType() {
     // this.setPage(1);
     return this._selectedType;
+  }
+
+  get typesLoaded() {
+    return this._typesLoaded;
   }
 
   get totalCount() {

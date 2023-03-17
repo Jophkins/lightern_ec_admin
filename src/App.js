@@ -35,8 +35,7 @@ const App = observer(() => {
       <div className="container d-flex justify-content-center">
         TODO:
         <ul>
-          <li>Удаление категории</li>
-          <li>Редактирование категории</li>
+          <li>Привести в порядок товары</li>
           <li>Удаление товара</li>
           <li>Редактирование товара</li>
         </ul>

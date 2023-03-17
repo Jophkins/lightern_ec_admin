@@ -10,6 +10,11 @@ export const deleteType = async (typeId) => {
   return data;
 }
 
+export const editType = async (typeId, editedType) => {
+  const { data } = await $authHost.put(`api/type/${typeId}`, editedType);
+  return data;
+}
+
 export const fetchTypes = async () => {
   const { data } = await $host.get('api/type');
   return data;

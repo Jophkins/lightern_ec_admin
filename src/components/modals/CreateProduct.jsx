@@ -55,7 +55,8 @@ const CreateProduct = observer(() => {
       setPrice(0);
       setFile(null);
       setInfo([]);
-    });
+      product.setProductsLoaded(false);
+    }).catch(err => alert(err.response.data.message));
   };
 
   return (

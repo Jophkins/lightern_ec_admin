@@ -1,7 +1,9 @@
 import React from 'react';
 import { createType } from '../../http/productAPI';
+import { Context } from '../../index';
 
 const CreateType = () => {
+  const product = React.useContext(Context);
 
   const [inputValue, setInputValue] = React.useState('');
 
@@ -10,7 +12,7 @@ const CreateType = () => {
     createType({ name: inputValue })
       .then(data => {
         setInputValue('');
-        alert('Категория добавлена');
+        product.product.setTypesLoaded(false);
       })
       .catch(e => {
         alert(e.response.data.message);
