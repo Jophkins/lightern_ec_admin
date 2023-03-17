@@ -2,17 +2,22 @@ import { $authHost, $host } from './index';
 
 export const createType = async (type) => {
   const { data } = await $authHost.post('api/type', type);
-  return data
+  return data;
+}
+
+export const deleteType = async (typeId) => {
+  const { data } = await $authHost.delete(`api/type/${typeId}`);
+  return data;
 }
 
 export const fetchTypes = async () => {
   const { data } = await $host.get('api/type');
-  return data
+  return data;
 }
 
 export const createProduct = async (product) => {
   const { data } = await $authHost.post('api/product', product);
-  return data
+  return data;
 }
 
 export const fetchProduct = async (typeId, page, limit=5) => {
@@ -21,10 +26,10 @@ export const fetchProduct = async (typeId, page, limit=5) => {
       typeId, page, limit
     }
   });
-  return data
+  return data;
 }
 
 export const fetchOneProduct = async (id) => {
   const { data } = await $host.get('api/product/' + id);
-  return data
+  return data;
 }

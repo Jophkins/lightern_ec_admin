@@ -17,7 +17,7 @@ const Products = observer(() => {
       product.setProducts(data.rows);
       product.setTotalCount(data.count);
     });
-  }, [product]);
+  }, [product, product.types]);
 
   React.useEffect(() => {
     fetchProduct(product.selectedType.id, product.page, 20).then(data => {
