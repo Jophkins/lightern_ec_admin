@@ -10,7 +10,7 @@ const ProductList = observer(() => {
     <div>
       <div className='row'>
         {product.products.map(product =>
-          <ProductItem key={product.id} product={product} />
+          <ProductItem key={product.id} product={product} />,
         )}
       </div>
     </div>
