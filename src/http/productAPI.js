@@ -1,5 +1,7 @@
 import { $authHost, $host } from './index';
 
+
+//types
 export const createType = async (type) => {
   const { data } = await $authHost.post('api/type', type);
   return data;
@@ -20,8 +22,21 @@ export const fetchTypes = async () => {
   return data;
 }
 
+
+
+// products
 export const createProduct = async (product) => {
   const { data } = await $authHost.post('api/product', product);
+  return data;
+}
+
+export const deleteProduct = async (productId) => {
+  const { data } = await $authHost.delete(`api/product/${productId}`);
+  return data;
+}
+
+export const editProduct = async (productId, editedProduct) => {
+  const { data } = await $authHost.patch(`api/product/${productId}`, editedProduct);
   return data;
 }
 
@@ -36,5 +51,22 @@ export const fetchProduct = async (typeId, page, limit=5) => {
 
 export const fetchOneProduct = async (id) => {
   const { data } = await $host.get('api/product/' + id);
+  return data;
+}
+
+
+// product info
+export const editInfo = async (infoId, editedInfo) => {
+  const { data } = await $authHost.patch(`api/info/${infoId}`, editedInfo);
+  return data;
+}
+
+export const deleteInfo = async (infoId) => {
+  const { data } = await $authHost.delete(`api/info/${infoId}`);
+  return data;
+}
+
+export const createInfo = async (info) => {
+  const { data } = await $authHost.post('api/info', info);
   return data;
 }
