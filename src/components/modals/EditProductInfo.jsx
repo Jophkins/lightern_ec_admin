@@ -3,7 +3,7 @@ import { Context } from '../../index';
 import { observer } from 'mobx-react-lite';
 import { editProduct, fetchTypes } from '../../http/productAPI';
 
-const EditProductInfo = observer(({ id, oneProduct }) => {
+const EditProductInfo = observer(({ id, oneProduct, setIsProductLoaded }) => {
   const { product } = React.useContext(Context);
   const [info, setInfo] = React.useState([]);
   const [name, setName] = React.useState('');
@@ -25,24 +25,6 @@ const EditProductInfo = observer(({ id, oneProduct }) => {
     setFile(e.target.files[0]);
   };
 
-  const addInfo = (e) => {
-    e.preventDefault();
-    setInfo(prevState => {
-      return [...prevState, { title: '', description: '', number: Date.now() }];
-    });
-  };
-
-  const removeInfo = (e, number) => {
-    e.preventDefault();
-    setInfo(prevState => {
-      return prevState.filter(item => item.number !== number);
-    });
-  };
-
-  const changeInfo = (key, value, number) => {
-    setInfo(info.map(i => i.number === number ? { ...i, [key]: value } : i));
-  };
-
   const edit = (e) => {
     e.preventDefault();
     const editedData = {
@@ -57,7 +39,7 @@ const EditProductInfo = observer(({ id, oneProduct }) => {
       setName('');
       setArticle('');
       setPrice(0);
-      product.setProductsLoaded(false);
+      setIsProductLoaded(false);
     }).catch(err => alert(err.response.data.message));
   };
 
@@ -86,13 +68,13 @@ const EditProductInfo = observer(({ id, oneProduct }) => {
                   )}
                 </ul>
               </div>
-              <label htmlFor='name' className='form-label mt-4'>Введите название товара</label>
+              <label htmlFor='name' className='form-label mt-4'>Введите новое название товара</label>
               <input onChange={e => setName(e.target.value)} value={name} type='text' className='form-control' id='name'
                      placeholder='Введите название товара' />
-              <label htmlFor='article' className='form-label mt-4'>Введите АРТИКУЛ товара</label>
+              <label htmlFor='article' className='form-label mt-4'>Введите новый АРТИКУЛ товара</label>
               <input onChange={e => setArticle(e.target.value)} value={article} type='text' className='form-control'
                      id='article' placeholder='АРТИКУЛ' />
-              <label htmlFor='price' className='form-label mt-4'>Введите стоимость товара</label>
+              <label htmlFor='price' className='form-label mt-4'>Введите новую стоимость товара (руб.)</label>
               <input onChange={e => setPrice(Number(e.target.value))} value={price} type='number'
                      className='form-control' id='price' placeholder='Цена' />
               <label htmlFor='imgAdd' className='form-label mt-4'>Добавьте изображение товара</label>
@@ -100,7 +82,7 @@ const EditProductInfo = observer(({ id, oneProduct }) => {
               <hr/>
               <div className='modal-footer mt-5'>
                 <button type='button' className='btn btn-outline-secondary' data-bs-dismiss='modal'>Закрыть</button>
-                <button type='submit' className='btn btn-outline-success'>Добавить</button>
+                <button type='submit' className='btn btn-outline-success' data-bs-dismiss='modal'>Обновить</button>
               </div>
             </form>
           </div>

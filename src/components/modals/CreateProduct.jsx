@@ -99,13 +99,13 @@ const CreateProduct = observer(() => {
               {info.map(item =>
                 <div key={item.number} className='row my-3'>
                   <div className='col-5'>
-                    <input value={item.title} onChange={(e) => changeInfo('title', e.target.value, item.number)}
+                    <input className='form-control' value={item.title} onChange={(e) => changeInfo('title', e.target.value, item.number)}
                            style={{ width: '100%' }} type='text' placeholder='Название характеристики' required />
                   </div>
                   <div className='col-5'>
-                    <input onChange={(e) => changeInfo('description', e.target.value, item.number)}
+                    <input className='form-control' onChange={(e) => changeInfo('description', e.target.value, item.number)}
                            style={{ width: '100%' }} type='text'
-                           placeholder='Введите описание характеристики' required />
+                           placeholder='Значение характеристики' required />
                   </div>
                   <div className='col'>
                     <button onClick={(e) => removeInfo(e, item.number)} className='btn btn-outline-danger'>Удалить
