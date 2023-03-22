@@ -70,3 +70,8 @@ export const createInfo = async (info) => {
   const { data } = await $authHost.post('api/info', info);
   return data;
 }
+
+export const replaceImg = async (productId, newImg) => {
+  const { data } = await $authHost.patch(`api/product/${productId}/image`, newImg);
+  return data;
+}

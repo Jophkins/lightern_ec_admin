@@ -30,9 +30,9 @@ const CreateType = () => {
           </div>
           <div className='modal-body'>
             <form onSubmit={addType}>
-              <input value={inputValue} onChange={e => setInputValue(e.target.value)} type='text'
+              <input className="form-control" value={inputValue} onChange={e => setInputValue(e.target.value)} type='text'
                      placeholder='Введите название категории' minLength='2' maxLength='50' required />
-              <button type='submit' className='btn btn-outline-success mx-5'>Добавить</button>
+              <button type='submit' className='btn btn-outline-success my-2'>Добавить</button>
             </form>
           </div>
           <div className='modal-footer'>

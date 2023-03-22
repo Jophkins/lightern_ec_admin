@@ -77,9 +77,6 @@ const EditProductInfo = observer(({ id, oneProduct, setIsProductLoaded }) => {
               <label htmlFor='price' className='form-label mt-4'>Введите новую стоимость товара (руб.)</label>
               <input onChange={e => setPrice(Number(e.target.value))} value={price} type='number'
                      className='form-control' id='price' placeholder='Цена' />
-              <label htmlFor='imgAdd' className='form-label mt-4'>Добавьте изображение товара</label>
-              <input onChange={selectFile} type='file' className='form-control' id='imgAdd' />
-              <hr/>
               <div className='modal-footer mt-5'>
                 <button type='button' className='btn btn-outline-secondary' data-bs-dismiss='modal'>Закрыть</button>
                 <button type='submit' className='btn btn-outline-success' data-bs-dismiss='modal'>Обновить</button>

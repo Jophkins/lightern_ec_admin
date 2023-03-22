@@ -6,6 +6,7 @@ import EditProductInfo from '../../components/modals/EditProductInfo';
 import { Context } from '../../index';
 import EditAttributes from '../../components/modals/EditAttributes';
 import CreateAttribute from '../../components/modals/CreateAttribute';
+import ReplaceImage from '../../components/modals/ReplaceImage';
 
 const ProductPage = () => {
   const [oneProduct, setOneProduct] = React.useState({ info: [] });
@@ -69,6 +70,7 @@ const ProductPage = () => {
     <div className='container-fluid mt-5 card p-5'>
       <CreateAttribute productId={oneProduct.id} setIsProductLoaded={setIsProductLoaded} />
       <EditProductInfo id={id} oneProduct={oneProduct} setIsProductLoaded={setIsProductLoaded} />
+      <ReplaceImage id={id} setIsProductLoaded={setIsProductLoaded} />
       <div className='row justify-content-between'>
         <button className='btn btn-outline-primary mb-5' data-bs-toggle='modal' data-bs-target='#editModal'
                 style={{ width: '20%' }}>Изменить
@@ -78,10 +80,17 @@ const ProductPage = () => {
                 style={{ width: '20%' }}>Удалить товар
         </button>
       </div>
-      <div className='row'>
+      <hr/>
+      <div className='row mt-4'>
         <div className='col-4'>
+          <button className='btn btn-outline-primary mb-5' data-bs-toggle='modal' data-bs-target='#replaceImgModal'>Изменить
+            изображение товара
+          </button>
           <img className='img-fluid' width={300} height={300} src={process.env.REACT_APP_API_URL + oneProduct.img}
                alt='' />
+          <div>
+            Категория товара: <b>{(productType && productType.name) || 'Без категории'}</b>
+          </div>
         </div>
         <div className='col-2'>
           <div className='row'>
@@ -97,9 +106,6 @@ const ProductPage = () => {
           <div className='card'>
             <span>Цена:</span>
             <h3>{oneProduct.price} руб.</h3>
-          </div>
-          <div>
-            Категория товара: <b>{(productType && productType.name) || 'Без категории'}</b>
           </div>
         </div>
       </div>
