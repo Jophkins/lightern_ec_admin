@@ -59,7 +59,7 @@ const SidebarAndAppRouter =  observer(() => {
           <div className="container d-flex justify-content-center">
             TODO:
             <ul>
-              <li>Поиск по артиклю</li>
+              <li>Заказы</li>
             </ul>
           </div>
           <AppRouter />

@@ -7,6 +7,7 @@ export default class ProductStore {
     this._products = [];
     this._productsLoaded = false;
     this._selectedType = {};
+    this._selectedArticle = '';
     this._typesLoaded = false;
     this._page = 1;
     this._totalCount = 0;
@@ -30,6 +31,10 @@ export default class ProductStore {
 
   setSelectedType(type) {
     this._selectedType = type;
+  }
+
+  setSelectedArticle(article) {
+    this._selectedArticle = article;
   }
 
   setTypesLoaded(bool) {
@@ -61,6 +66,10 @@ export default class ProductStore {
   get selectedType() {
     // this.setPage(1);
     return this._selectedType;
+  }
+
+  get selectedArticle() {
+    return this._selectedArticle;
   }
 
   get typesLoaded() {

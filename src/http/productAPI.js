@@ -40,10 +40,10 @@ export const editProduct = async (productId, editedProduct) => {
   return data;
 }
 
-export const fetchProduct = async (typeId, page, limit=5) => {
+export const fetchProduct = async (typeId, article, page, limit=5) => {
   const { data } = await $host.get('api/product', {
     params: {
-      typeId, page, limit
+      typeId, article, page, limit
     }
   });
   return data;
